@@ -13,7 +13,7 @@ Italic | \_italic_
 Bold | \*bold*
 Code | \`code`
 Heading | # Heading 1 <br><br> ## Heading 2 <br><br> ### Heading 3
-Blockquote | > blockquote
+Blockquote | > blockquote <br><br> or <br><br> >>> <br> blockquote <br> >>>
 Unordered List | - item 1 <br> - item 2 <br> - item 3
 Ordered List | 1. item 1 <br> 2. item 2 <br> 3. item 3
 Horizontal Rule | ---
@@ -93,6 +93,36 @@ This is text in a block. This text is in the same block.<br>
 This is a hard line break.
 ```
 
+### Link
+
+An inline link is in the form of `[title](url)`. 
+
+```
+[link title](https://example.com/)
+```
+
+A link URL can be defined in its own block by using a reference link.
+
+```
+[link title]{foo}
+
+{foo}: https://example.com/
+```
+
+Reference links and their definitions do not depend on each other.
+
+```
+[empty link]{foo}
+
+{bar}: https://example.com
+```
+
+Becomes...
+
+```
+<a>empty link</a>
+```
+
 ## Block rules
 
 ### Paragraphs
@@ -114,6 +144,7 @@ Becomes ...
 ```
 
 ### Headings
+
 Headings begin (on the first line only) with 1-6 `#`, followed by a space and then the heading text. Too many hashes will result in a paragraph instead.
 
 ```
@@ -136,3 +167,43 @@ Becomes...
 <h6>Heading 3</h6>
 <p>########## Too many hashes</p>
 ```
+
+### Blockquotes
+
+There are two types of blockquotes. The first type begins with a `>` followed by a space and becomes a paragraph inside a blockquote that can only contain inline syntax.
+
+```
+> This is a paragraph
+inside a *blockquote*
+
+> # This is still a paragraph
+```
+
+Becomes...
+```
+<blockquote>
+   <p>This is a paragraph inside a <strong>blockquote</strong></p>
+</blockquote>
+
+<blockquote>
+   <p># This is still a paragraph</p>
+</blockquote>
+```
+
+The other type of blockquote is delimited with `>>>` and allows other block-level elements to nest inside of it. If nested blockquotes are needed, you can add more `>` to the containing delimiters.
+
+```
+>>>
+# This is a heading
+
+This is a paragraph.
+>>>
+
+>>>>
+>>>
+This is a nested blockquote.
+>>>
+>>>>
+```
+
+
