@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "name": "cutdown",
+  "version": "0.1.0",
+  "description": "A minimalistic markup syntax that fixes some of the ambiguities of CommonMark.",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [
+    "markup",
+    "markdown"
+  ],
+  "author": "Collin Brennan",
+  "license": "ISC"
+}
